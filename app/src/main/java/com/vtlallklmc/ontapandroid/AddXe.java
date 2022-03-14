@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
@@ -50,6 +51,7 @@ public class AddXe extends AppCompatActivity {
                 Intent intentResult = new Intent();
                 intentResult.putExtra("name",edtName.getText().toString());
                 intentResult.putExtra("img",imgToByteArray(imgPicker));
+                Toast.makeText(AddXe.this, imgToByteArray(imgPicker).toString(), Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK,intentResult);
                 finish();
             }

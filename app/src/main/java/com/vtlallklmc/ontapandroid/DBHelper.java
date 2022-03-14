@@ -62,6 +62,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor =db.rawQuery("SELECT * FROM "+TB_NAME,null);
         while(cursor.moveToNext()){
             Xe xe = new Xe(cursor.getBlob(2), cursor.getString(1));
+            lstXe.add(xe);
         }
         return lstXe;
     }

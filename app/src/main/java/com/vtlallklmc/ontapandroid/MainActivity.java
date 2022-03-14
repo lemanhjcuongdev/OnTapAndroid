@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this,AddXe.class);
                 startActivityForResult(intent, INSERT_CODE);
             }
         });
@@ -47,14 +47,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode==INSERT_CODE && resultCode==RESULT_OK){
             String name = data.getStringExtra("name");
-            byte[] img =  data.getStringExtra("img").getBytes();
+            byte[] img =  data.getByteArrayExtra("img");
 
             dbHelper = new DBHelper(this);
             dbHelper.them(new Xe(img, name));
+            getListXe();
         }
+        else super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     public void getView(){
